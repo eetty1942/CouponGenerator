@@ -15,11 +15,13 @@ public class CouponController {
 	@Autowired
     private CouponMapper couponMapper;
 
+	//전체 리스트 출력 
 	@RequestMapping("/coupon")
 	public List<Coupon> coupon() throws Exception{
         List<Coupon> coupon = couponMapper.couponList();
         return coupon;
     }
 
+	
 
 }
