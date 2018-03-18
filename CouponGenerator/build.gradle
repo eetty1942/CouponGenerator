@@ -36,6 +36,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile("org.mybatis:mybatis-spring")
 	compile("org.mybatis:mybatis")
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
+	compile('javax.servlet:jstl')
+
 
 	compile('org.projectlombok:lombok:1.16.6')
 	runtime('com.h2database:h2')

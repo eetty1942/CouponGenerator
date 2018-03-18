@@ -4,21 +4,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
  
 <mapper namespace="com.coupon.mapper.CouponMapper">
-    <!-- 생성 쿠폰 입력 -->
-    <insert id="couponInsert" parameterType="com.coupon.domain.Coupon">
+
+    <select id="selectCouponList" resultType="com.coupon.domain.Coupon">
+        SELECT * FROM coupon
+    </select>
+     
+    <select id="pagingCouponList" parameterType="int" resultType="com.coupon.domain.Coupon">
+		SELECT * FROM coupon LIMIT #{(page - 1) * 10}, #{10}
+	</select>
+     
+    <select id="checkRegistedEmail" parameterType="String" resultType="com.coupon.domain.Coupon">
+        SELECT * FROM coupon WHERE email = #{email}
+    </select>
+    
+    <select id="checkRegistedCoupon" parameterType="String" resultType="String">
+        SELECT couponCode FROM coupon WHERE couponCode = #{couponCode}
+    </select>  
+    
+    <insert id="insertCoupon" parameterType="com.coupon.domain.Coupon">
         insert into coupon
             values
         (#{id},#{email},#{couponCode},now(),now()+7)
     </insert>
-    <!-- 전체 등록된 쿠폰 출력  -->
-    <select id="couponList" resultType="com.coupon.domain.Coupon">
-        select * from coupon
-    </select>
 
-	<!-- 존재하는 이메일 확인 -->
-    <select id="couponExist" parameterType="String" resultType="com.coupon.domain.Coupon">
-        select * from coupon where email = #{email}
-    </select> 
+    
+
+    
 </mapper>
 
 

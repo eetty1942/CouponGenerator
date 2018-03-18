@@ -2,17 +2,25 @@ package com.coupon.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.coupon.domain.BaseResponse;
 import com.coupon.domain.Coupon;
 
 public interface CouponMapper {
 	
-	//생성 쿠폰 입력
-	public void couponInsert(Coupon coupon)throws Exception;
-
-	//전체 등록된 쿠폰 출력 
-	public List<Coupon>couponList()throws Exception; 
+	public List<Coupon> selectCouponList();
 	
-	//존재하는 이메일 확인 
-	public List<Coupon>couponExist(String email)throws Exception;
+	public List<Coupon> pagingCouponList(int page);
+	
+	public Coupon checkRegistedEmail(String email);
+	
+	public String checkRegistedCoupon(String couponCode);
+	
+	public void insertCoupon(Coupon coupon);
+	
+	
+
+	
 
 }

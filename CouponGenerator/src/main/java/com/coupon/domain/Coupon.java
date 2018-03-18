@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import lombok.Data;
 
 public class Coupon {
-	int id;
-	String email;
-	String couponCode;
-	Date registDate;
-	Date validDate;
+	private int id;
+	private String email;
+	private String couponCode;
+	private Date registDate;
+	private Date validDate;
 	
 	public int getId() {
 		return id;
@@ -43,6 +43,9 @@ public class Coupon {
 	public void setValidDate(Date validDate) {
 		this.validDate = validDate;
 	}
+	
+	
+	
 	
 
 
