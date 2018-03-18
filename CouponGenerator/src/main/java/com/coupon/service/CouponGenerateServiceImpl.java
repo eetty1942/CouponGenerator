@@ -25,7 +25,7 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
 	}
 	
 	@Override
-	public List<Coupon> getPgingList(int i) {
+	public List<Coupon> getPagingList(int i) {
 		return couponMapper.pagingCouponList(i);
 	}
 
@@ -35,26 +35,36 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
 	public Coupon generateCoupon(String email) {
 		
 	
-		String couponkey = "";
-		String chkEmail="";
+		String couponKey = "";
 		Coupon coupon = new Coupon();
-		couponkey = generateKey();
+		couponKey = generateKey();
+		//couponKey = generateKeyUseEmail(email);
 		coupon.setEmail(email);
-    		coupon.setCouponCode(couponkey);		
+    		coupon.setCouponCode(couponKey);		
 
 			
 		return coupon;
-		//return couponMapper.selectBoardList();
 	}
 
+	@Override	
+	public List<Coupon> isRegistedEmail(String email) {
+		return couponMapper.checkRegistedEmail(email); 
 		
+		//return registCheck;
+	}
+	@Override	
+	public List<Coupon> isRegistedCoupon(String coupon) {
+		List<Coupon> registCheck = couponMapper.checkRegistedCoupon(coupon);
+		
+		return registCheck;
+	}
 	
 	private String checkKey(String couponCode) {
 		
 		String chk;
-		String rtnCode;
-		rtnCode = couponMapper.checkRegistedCoupon(couponCode);
-		if(rtnCode.equals(couponCode)) {
+		List<Coupon> returnCode;
+		returnCode = couponMapper.checkRegistedCoupon(couponCode);
+		if(returnCode.get(0).equals(couponCode)) {
 			chk="Y";
 		}else {
 			chk="N";
@@ -134,12 +144,6 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
         return couponCode;
     }
 	
-	
-	@Override
-	public BaseResponse saveCoupon(Coupon coupon) {
-		
-		couponMapper.insertCoupon(coupon);
-		return new BaseResponse(new StandardResponseHeader());
-	}
+
 	
 }

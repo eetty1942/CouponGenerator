@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM coupon WHERE email = #{email}
     </select>
     
-    <select id="checkRegistedCoupon" parameterType="String" resultType="String">
+    <select id="checkRegistedCoupon" parameterType="String" resultType="com.coupon.domain.Coupon">
         SELECT couponCode FROM coupon WHERE couponCode = #{couponCode}
     </select>  
     

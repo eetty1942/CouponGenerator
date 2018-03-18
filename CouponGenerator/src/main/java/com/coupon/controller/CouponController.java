@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.coupon.domain.BaseResponse;
 import com.coupon.domain.Coupon;
+import com.coupon.domain.StandardResponseHeader;
 import com.coupon.mapper.CouponMapper;
 import com.coupon.service.CouponGenerateService;
 
@@ -24,57 +26,31 @@ public class CouponController {
 	private CouponGenerateService couponGenSrvc;
 	
 	
-	/*@GetMapping("/coupon")
-	public List<Coupon> selectCouponList() {
-        List<Coupon> couponList = couponGenSrvc.getList();
-        
-        return couponList;
-    }*/
 	
-	@GetMapping("/")
-	public ModelAndView main() {
-        List<Coupon> couponList = couponGenSrvc.getList();
-        
-        //return couponList;
-        ModelAndView view = new ModelAndView();
-        view.setViewName("index");
-        view.addObject("list", "test");
-        view.addObject(couponList);
-        return view;
-    }
-
-	@GetMapping("/list")
-	public ModelAndView couponListForm() {
-        List<Coupon> couponList = couponMapper.selectCouponList();
-        return new ModelAndView("couponList","list", couponList);
-    }
-	
-	@GetMapping("/writeForm")
-	public ModelAndView selectWriteForm() {
-        return new ModelAndView("writeForm");
-    }
-	
-	@GetMapping("/coupon/emailcheck")
-	public Coupon checkExistEmail(String email) {
-        Coupon existCoupon = couponMapper.checkRegistedEmail(email);
+	@GetMapping("/coupon/checkRegisterd/email")
+	public List<Coupon> checkExistEmail(String email) {
+        List<Coupon> existCoupon = couponGenSrvc.isRegistedEmail(email);
         return existCoupon;
     }
-	
+
+	@GetMapping("/coupon/checkRegisterd/coupon")
+	public List<Coupon> checkExistCoupon(String coupon) {
+        List<Coupon> existCoupon = couponGenSrvc.isRegistedCoupon(coupon);
+        return existCoupon;
+    }
+
 	@PostMapping("/coupon/write")
-	public String makeCoupon(String email) {
-		
-		Coupon coupon = couponGenSrvc.generateCoupon(email);
-		couponGenSrvc.saveCoupon(coupon);
-		
-		return "redirect:/coupon";
+	public BaseResponse saveCoupon(Coupon coupon) {
+		couponMapper.insertCoupon(coupon);
+		return new BaseResponse(new StandardResponseHeader());
 	}
 	
 	//페이지네이션 
-	@RequestMapping("/coupon/list/")
-	public ModelAndView pagenateCouponList(int i) throws Exception{
+	@RequestMapping("/coupon/list")
+	public List<Coupon> pagenateCouponList(int i){
 	
-        List<Coupon> couponList = couponGenSrvc.getPgingList(i);
-        return new ModelAndView("couponPagingList","list", couponList);
+        List<Coupon> couponList = couponGenSrvc.getPagingList(i);
+        return couponList;
     }
 
 

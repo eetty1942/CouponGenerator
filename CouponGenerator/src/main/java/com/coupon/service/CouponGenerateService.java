@@ -12,11 +12,12 @@ public interface CouponGenerateService {
 	 */
 	List<Coupon> getList();
 
-	List<Coupon> getPgingList(int i);
+	List<Coupon> getPagingList(int i);
 	
-	BaseResponse saveCoupon(Coupon coupon);
+	List<Coupon> isRegistedCoupon(String coupon);
 	
-	
+	List<Coupon> isRegistedEmail(String emain);
+
 	public Coupon generateCoupon(String email);	
 
 }

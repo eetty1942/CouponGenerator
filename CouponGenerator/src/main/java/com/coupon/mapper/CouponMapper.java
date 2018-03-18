@@ -13,9 +13,9 @@ public interface CouponMapper {
 	
 	public List<Coupon> pagingCouponList(int page);
 	
-	public Coupon checkRegistedEmail(String email);
+	public List<Coupon> checkRegistedEmail(String email);
 	
-	public String checkRegistedCoupon(String couponCode);
+	public List<Coupon> checkRegistedCoupon(String couponCode);
 	
 	public void insertCoupon(Coupon coupon);
 	
