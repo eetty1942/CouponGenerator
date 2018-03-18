@@ -77,13 +77,13 @@ HTTP 활용
  -------------
  **6. 기타 사항5. 프로젝트 빌드 & 실행 방법**
  ----------------
-(1)  gitHub 소스 url 복사 (https://github.com/eetty1942/CouponGenerator.git)
-(2) IDE (STS)에 Import
-(3) Gradle Build
-(4) MySQL 테이블 생성 
-(5) 스프링부트 실행
-(6) http://localhost:8088/ 접속
-* 부득이하게 MySQL 을 사용했습니다. 테이블 생성 SQL 은 Resource 아래 첨부
+> (1)  gitHub 소스 url 복사 (https://github.com/eetty1942/CouponGenerator.git)
+> (2) IDE (STS)에 Import
+> (3) Gradle Build
+> (4) MySQL 테이블 생성 
+> (5) 스프링부트 실행
+> (6) http://localhost:8088/ 접속
+> * 부득이하게 MySQL 을 사용했습니다. 테이블 생성 SQL 은 Resource 아래 첨부
  -------------
 
 **6. 기타 사항**
