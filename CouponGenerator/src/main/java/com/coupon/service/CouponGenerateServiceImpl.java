@@ -66,14 +66,14 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
 	 * 
 	 * 앞 8자리는 난수로 생성 **** ****
 	 * 뒤 8자리는 앞 4자리, 뒤 4자리로 나누어 코드화 한다.
-	 *앞4자리는 이메일의 아이디부분 아스키코드 변환 후 전체의 합 + 2000 (4자리가 안될 경우 고) 한뒤 16진수 문자열로 파싱 후 앞 4자리 저
-	 * 뒤4자리는 이메일의 도메인 .com 혹은 .net 등의 앞부분의 곱 + 2000(4자리가 안될 경우 고) 한뒤 16진수 문자열로 파싱 후 앞 4자리 저
+	 *앞4자리는 이메일의 아이디부분 아스키코드 변환 후 전체의 합 + 2000 (4자리가 안될 경우 고) 한뒤 16진수 문자열로 파싱 후 앞 4자리 저장 
+	 * 뒤4자리는 이메일의 도메인 .com 혹은 .net 등의 앞부분의 곱 + 2000(4자리가 안될 경우 고) 한뒤 16진수 문자열로 파싱 후 앞 4자리 저장 
 	 * 
-	 * 이메일 아이디 + 도메인은 고유값으로 이를 코드화하면 고유값이 생성되어 중복 방
+	 * 이메일 아이디 + 도메인은 고유값으로 이를 코드화하면 고유값이 생성되어 중복 방지 
 	 * @param email
 	 * @return
 	 */
-	private static String generateKey2(String email) {
+	private static String generateKeyUseEmail(String email) {
 
         
         int idxMailId = email.indexOf("@"); 
