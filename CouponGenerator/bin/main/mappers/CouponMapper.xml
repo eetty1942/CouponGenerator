@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM coupon
     </select>
      
-    <select id="pagingCouponList" parameterType="int" resultType="com.coupon.domain.Coupon">
-		SELECT * FROM coupon LIMIT #{(page - 1) * 10}, #{10}
+    <select id="pagingCouponList" parameterType="hashmap" resultType="com.coupon.domain.Coupon">
+		SELECT * FROM coupon #{page}, #{itemsPerPage}
 	</select>
      
     <select id="checkRegistedEmail" parameterType="String" resultType="com.coupon.domain.Coupon">

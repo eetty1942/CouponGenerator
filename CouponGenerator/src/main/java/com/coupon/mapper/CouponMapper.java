@@ -1,5 +1,6 @@
 package com.coupon.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -11,7 +12,7 @@ public interface CouponMapper {
 	
 	public List<Coupon> selectCouponList();
 	
-	public List<Coupon> pagingCouponList(int page);
+	public List<Coupon> pagingCouponList(HashMap<String, Object> hashMap);
 	
 	public List<Coupon> checkRegistedEmail(String email);
 	

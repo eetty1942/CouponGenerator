@@ -1,5 +1,6 @@
 package com.coupon.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -25,8 +26,17 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
 	}
 	
 	@Override
-	public List<Coupon> getPagingList(int i) {
-		return couponMapper.pagingCouponList(i);
+	public List<Coupon> getPagingList(int page, int itemsPerPage) {
+		
+		page = (page - 1)*itemsPerPage;
+		
+		
+		HashMap<String, Object> hashMap = new HashMap<String, Object>();
+		hashMap.put("page", page);
+		hashMap.put("itemsPerPage", itemsPerPage);
+
+		
+		return couponMapper.pagingCouponList(hashMap);
 	}
 
 

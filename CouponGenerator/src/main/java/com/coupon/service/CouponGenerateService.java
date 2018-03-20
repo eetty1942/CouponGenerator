@@ -12,7 +12,7 @@ public interface CouponGenerateService {
 	 */
 	List<Coupon> getList();
 
-	List<Coupon> getPagingList(int i);
+	List<Coupon> getPagingList(int page, int itemsPerPage);
 	
 	List<Coupon> isRegistedCoupon(String coupon);
 	
