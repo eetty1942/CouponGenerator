@@ -14,7 +14,7 @@ public interface CouponGenerateService {
 
 	List<Coupon> getPagingList(int page, int itemsPerPage);
 	
-	List<Coupon> isRegistedCoupon(String coupon);
+	Boolean isRegistedCoupon(String coupon);
 	
 	List<Coupon> isRegistedEmail(String emain);
 

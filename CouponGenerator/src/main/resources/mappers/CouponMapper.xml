@@ -10,14 +10,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
      
     <select id="pagingCouponList" parameterType="hashmap" resultType="com.coupon.domain.Coupon">
-		SELECT * FROM coupon #{page}, #{itemsPerPage}
+		SELECT * FROM coupon LIMIT #{page}, #{itemsPerPage}
 	</select>
      
     <select id="checkRegistedEmail" parameterType="String" resultType="com.coupon.domain.Coupon">
         SELECT * FROM coupon WHERE email = #{email}
     </select>
     
-    <select id="checkRegistedCoupon" parameterType="String" resultType="com.coupon.domain.Coupon">
+    <select id="checkRegistedCoupon" parameterType="String" resultType="Boolean">
         SELECT couponCode FROM coupon WHERE couponCode = #{couponCode}
     </select>  
     

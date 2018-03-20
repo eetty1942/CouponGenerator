@@ -59,27 +59,10 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
 	@Override	
 	public List<Coupon> isRegistedEmail(String email) {
 		return couponMapper.checkRegistedEmail(email); 
-		
-		//return registCheck;
 	}
 	@Override	
-	public List<Coupon> isRegistedCoupon(String coupon) {
-		List<Coupon> registCheck = couponMapper.checkRegistedCoupon(coupon);
-		
-		return registCheck;
-	}
-	
-	private String checkKey(String couponCode) {
-		
-		String chk;
-		List<Coupon> returnCode;
-		returnCode = couponMapper.checkRegistedCoupon(couponCode);
-		if(returnCode.get(0).equals(couponCode)) {
-			chk="Y";
-		}else {
-			chk="N";
-		}
-		return chk;
+	public Boolean isRegistedCoupon(String coupon) {		
+		return couponMapper.checkRegistedCoupon(coupon);
 	}
 	
 	/**

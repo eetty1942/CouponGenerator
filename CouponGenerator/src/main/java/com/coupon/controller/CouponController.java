@@ -18,7 +18,7 @@ import com.coupon.domain.StandardResponseHeader;
 import com.coupon.mapper.CouponMapper;
 import com.coupon.service.CouponGenerateService;
 
-@ControllerAdvice
+@ControllerAdvice("com.maple")
 @RestController
 public class CouponController {
    
@@ -35,40 +35,6 @@ public class CouponController {
         return couponList;
     }*/
 	
-	/*@GetMapping("/")
-	public ModelAndView main() {
-        List<Coupon> couponList = couponGenSrvc.getList();
-        
-        //return couponList;
-        ModelAndView view = new ModelAndView();
-        view.setViewName("index");
-        view.addObject("list", "test");
-        view.addObject(couponList);
-        return view;
-    }*/
-	
-	/*
-	@PostMapping("/coupon/write")
-	public String makeCoupon(String email) {
-		
-		Coupon coupon = couponGenSrvc.generateCoupon(email);
-		couponGenSrvc.saveCoupon(coupon);
-		
-		return "redirect:/coupon";
-	}
-	*/
-	/*
-	@GetMapping("/writeForm")
-	public ModelAndView selectWriteForm() {
-        return new ModelAndView("writeForm");
-    }*/
-/*
-	@GetMapping("/list")
-	public List<Coupon> couponListForm() {
-        List<Coupon> couponList = couponMapper.selectCouponList();
-        //return new ModelAndView("couponList","list", couponList);
-        return couponList;
-    }*/
 	
 	
 	@GetMapping("/coupon/checkRegisterd/email")
@@ -78,14 +44,14 @@ public class CouponController {
     }
 
 	@GetMapping("/coupon/checkRegisterd/coupon")
-	public List<Coupon> checkExistCoupon(String coupon) {
-        List<Coupon> existCoupon = couponGenerateService.isRegistedCoupon(coupon);
-        return existCoupon;
+	public Boolean checkExistCoupon(String coupon) {
+       
+        return  couponGenerateService.isRegistedCoupon(coupon);
     }
 	
 	//페이지네이션 
 	@RequestMapping("/coupon/list")
-	public List<Coupon> pagenateCouponList(int page, int itemsPerPage){
+	public List<Coupon> pagenateCoponList(int page, int itemsPerPage) {
 	
         List<Coupon> couponList = couponGenerateService.getPagingList(page, itemsPerPage);
         return couponList;
@@ -96,6 +62,6 @@ public class CouponController {
 		couponMapper.insertCoupon(coupon);
 		return new BaseResponse(new StandardResponseHeader());
 	}
-
+	
 
 }

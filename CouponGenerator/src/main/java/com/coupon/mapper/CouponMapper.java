@@ -16,7 +16,7 @@ public interface CouponMapper {
 	
 	public List<Coupon> checkRegistedEmail(String email);
 	
-	public List<Coupon> checkRegistedCoupon(String couponCode);
+	public Boolean checkRegistedCoupon(String couponCode);
 	
 	public void insertCoupon(Coupon coupon);
 	
