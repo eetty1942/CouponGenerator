@@ -47,8 +47,8 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
 	
 		String couponKey = "";
 		Coupon coupon = new Coupon();
-		couponKey = generateKey();
-		//couponKey = generateKeyUseEmail(email);
+		//couponKey = generateKey();
+		couponKey = generateKeyUseEmail(email);
 		coupon.setEmail(email);
     		coupon.setCouponCode(couponKey);		
 
@@ -102,15 +102,20 @@ public class CouponGenerateServiceImpl implements CouponGenerateService{
 	    }
 	    couponCode = buf.toString();
         for(int i = 0; i < mailId.length(); i++){
-            thirdKey += (int) mailId.substring(i, i+1).charAt(0)+2000;
+            thirdKey += Math.pow((int) mailId.substring(i, i+1).charAt(0),2);
+            System.out.println("thirdkey : " + thirdKey);
+
             
         }
         for(int i = 0; i < mailDomain.length(); i++){
-            fourthKey = fourthKey * (int) mailDomain.substring(i, i+1).charAt(0)+2000;
+            fourthKey =(int) (fourthKey * Math.pow((int) (mailDomain.substring(i, i+1).charAt(0)),2));
+            System.out.println("fourthKey : " + thirdKey);
             
         }
-        thirdKeyCode = Integer.toHexString(thirdKey).substring(0, 3);
-        fourthKeyCode = Integer.toHexString(fourthKey).substring(0, 3);
+        thirdKeyCode = Integer.toHexString(thirdKey).substring(0, 4);
+        System.out.println("thirdkeyResult : " + thirdKeyCode);
+        fourthKeyCode = Integer.toHexString(fourthKey).substring(0, 4);
+        System.out.println("fourthkeyResult : " + fourthKeyCode);
 		couponCode = couponCode+thirdKeyCode+fourthKeyCode;
 	    System.out.println("couponCode : " + couponCode);
        

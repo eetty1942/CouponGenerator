@@ -58,8 +58,9 @@ public class CouponController {
     }
 	
 	@PostMapping("/coupon/write")
-	public BaseResponse saveCoupon(Coupon coupon) {
-		couponMapper.insertCoupon(coupon);
+	public BaseResponse saveCoupon(String email) {
+		Coupon writeCoupon = couponGenerateService.generateCoupon(email);
+		couponMapper.insertCoupon(writeCoupon);
 		return new BaseResponse(new StandardResponseHeader());
 	}
 	

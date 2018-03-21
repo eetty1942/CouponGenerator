@@ -22,9 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>  
     
     <insert id="insertCoupon" parameterType="com.coupon.domain.Coupon">
-        insert into coupon
+        insert into coupon(email, couponCode, registDate, validDate)
             values
-        (#{id},#{email},#{couponCode},now(),now()+7)
+        (#{email},#{couponCode},now(),now()+7)
     </insert>
 
     
